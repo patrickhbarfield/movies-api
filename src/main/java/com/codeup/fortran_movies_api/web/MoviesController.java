@@ -1,9 +1,7 @@
 
 package com.codeup.fortran_movies_api.web;
-
 import com.codeup.fortran_movies_api.data.Movie;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -37,7 +35,7 @@ public class MoviesController {
         List<Movie> movies = new ArrayList<>();
 
         movies.add(new Movie(1, "Pulp Fiction", "1994",
-                "Quentin Tarentino", "Samuel L. Jackson, Uma Therman, Bruce Willis", "43", "John Travolta", "Ving Rhames"));
+                "Quentin Tarentino", "Samuel L. Jackson, Uma Therman, Bruce Willis", "43", "dark comedy", "2 dudes recover a case"));
         return movies;
     }
 
@@ -47,11 +45,12 @@ public class MoviesController {
     }
 
     @PostMapping
-    public void createAll(Movie movie){
+    public void createAll(Movie movie) {
 
     }
+
     @PostMapping("all") // It's okay to have a POST and GET request mapped to the same route
-    public void createAll(@RequestBody List<Movie> moviesToAdd){
+    public void createAll(@RequestBody List<Movie> moviesToAdd) {
         System.out.println(moviesToAdd);
     }
 }
