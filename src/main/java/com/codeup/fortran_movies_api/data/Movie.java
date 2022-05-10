@@ -1,23 +1,34 @@
 package com.codeup.fortran_movies_api.data;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "movies")
 public class Movie {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false, length = 100)
     private String title;
-    private String year;
+
+    @Column(nullable = false)
     private String director;
+    private String year;
+
+  /*  private String director;
     private String actors;
     private String imdbId;
-    private String genre;
+    private String genre;*/
     private String plot;
 
-    public Movie(int id, String title, String year, String director, String actors, String imdbId, String genre, String plot) {
+    public Movie(int id, String title, String year, /*String director, String actors, String imdbId, String genre,*/ String plot) {
         this.id = id;
         this.title = title;
         this.year = year;
-        this.director = director;
+  /*      this.director = director;
         this.actors = actors;
         this.imdbId = imdbId;
-        this.genre = genre;
+        this.genre = genre;*/
         this.plot = plot;
     }
 
@@ -25,7 +36,7 @@ public class Movie {
     }
 
     public int getId() {
-        return id;
+        return (int) id;
     }
 
     public void setId(int id) {
@@ -48,7 +59,7 @@ public class Movie {
         this.year = year;
     }
 
-    public String getDirector() {
+  /*  public String getDirector() {
         return director;
     }
 
@@ -78,7 +89,7 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
+    }*/
 
     public String getPlot() {
         return plot;
@@ -94,10 +105,10 @@ public class Movie {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", year='" + year + '\'' +
-                ", director='" + director + '\'' +
+/*                ", director='" + director + '\'' +
                 ", actors='" + actors + '\'' +
                 ", imdbId='" + imdbId + '\'' +
-                ", genre='" + genre + '\'' +
+                ", genre='" + genre + '\'' +*/
                 ", plot='" + plot + '\'' +
                 '}';
     }
