@@ -6,8 +6,19 @@ import javax.persistence.*;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
+//    private String title;
+//    private String year;
+//    private String plot;
+    private String poster;
+    private String rating;
 
+//    @ManyToOne // Many movies have the same director
+//    @JsonIgonoreProperties("directedMovies")
+//    private Director director;
+
+    TOD: We need to define the same many-to-many relationships, but form the Movie side (with a little less annotatoin fun)
+        @ManyToMany(mappedBy = "movies", cascade - CascadeType.ALL) //
     @Column(nullable = false, length = 100)
     private String title;
 
@@ -21,10 +32,16 @@ public class Movie {
     private String genre;*/
     private String plot;
 
-    public Movie(int id, String title, String year, /*String director, String actors, String imdbId, String genre,*/ String plot) {
+    public Movie(int id, String title, String year, String plot, String poster, String rating) *String director, String actors, String imdbId, String genre,*/ String plot)
+
+    {
         this.id = id;
         this.title = title;
         this.year = year;
+        this.plot = plot;
+        this.poster = poster;
+        this.rating = rating;
+    }
   /*      this.director = director;
         this.actors = actors;
         this.imdbId = imdbId;
@@ -36,7 +53,7 @@ public class Movie {
     }
 
     public int getId() {
-        return (int) id;
+        return id;
     }
 
     public void setId(int id) {

@@ -3,7 +3,6 @@ package com.codeup.fortran_movies_api.web;
 import com.codeup.fortran_movies_api.data.Movie;
 import com.codeup.fortran_movies_api.data.MovieRepository;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @CrossOrigin //this is to help with local dev testing
@@ -12,21 +11,29 @@ import java.util.List;
 public class MoviesController {
 
     private final MovieRepository movieRepository;
+/*
+//    private final DirectorRespository directorRepository;
+*/
 
-    public MoviesController(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
-//    private List<Movie> sampleMovies = setMovies();
-
-//    @GetMapping("all")
-//    public List<Movie> getMovies() {
-//        return movieRepository.findAll();
+//    public MoviesController(MovieRepository movieRepository, DirectorRespository directorRespository) {
+       this.movieRepository = movieRepository;
+//        this.directorRepository = directorRespository;
 //    }
+public List<Movie> getByYearRange(@RequestParam("startYear") ireturn moviesRepository.findByYearRange
+    @GetMapping("id")
+    public Movie getById(@PathVariable int id) {
+        return MovieRepository.getById(id);
+    }
 
     @GetMapping("all") // Path becomes: /api/movies/all
 //append to path or allow for path variables
     public List<Movie> getALL() {
         return movieRepository.findAll();
+    }
+
+    @GetMapping("search")
+    public Movie findByTitle(@RequestParam("title") String title) {
+        return MovieRepository.findByTitle("title");
     }
 
     // adding this search/year will append to /api/movie
@@ -35,19 +42,15 @@ public class MoviesController {
         return movieRepository.findByYearRange(startYear, endYear);
     }
 
-    @GetMapping("id")
-    public Movie getById(@PathVariable int id) {
-        return MovieRepository.getById(id);
-    }
-
-    @GetMapping("search")
-    public Movie findByTitle(@RequestParam("title") String title) {
-        return MovieRepository.findByTitle("title");
+/*    @GetMapping("search/director")
+    public List<Director> getByDirector(@RequestParam("name") String directorName) {
+        return movieRepository.getByDirector("name");
+    }*/
 
 //@GetMapping('language')
 //public Movie getByLanguage(@PathVariable string id) {
 //        return movieRepository.getByLanguage();
-    }
+
 /*@GetMapping("search")
 public Movie getByTitle(@RequestParam("Title") String title){
         Movie movieToReturn = null;
