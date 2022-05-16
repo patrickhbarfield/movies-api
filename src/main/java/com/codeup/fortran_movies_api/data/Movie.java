@@ -17,7 +17,7 @@ public class Movie {
 //    @JsonIgonoreProperties("directedMovies")
 //    private Director director;
 
-    TOD: We need to define the same many-to-many relationships, but form the Movie side (with a little less annotatoin fun)
+   // TOD: We need to define the same many-to-many relationships, but form the Movie side (with a little less annotatoin fun)
         @ManyToMany(mappedBy = "movies", cascade - CascadeType.ALL) //
     @Column(nullable = false, length = 100)
     private String title;

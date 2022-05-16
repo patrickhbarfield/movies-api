@@ -19,7 +19,7 @@ public class MoviesController {
        this.movieRepository = movieRepository;
 //        this.directorRepository = directorRespository;
 //    }
-public List<Movie> getByYearRange(@RequestParam("startYear") ireturn moviesRepository.findByYearRange
+public List<Movie> getByYearRange(@RequestParam("startYear") return movieRepository.findByYearRange
     @GetMapping("id")
     public Movie getById(@PathVariable int id) {
         return MovieRepository.getById(id);
